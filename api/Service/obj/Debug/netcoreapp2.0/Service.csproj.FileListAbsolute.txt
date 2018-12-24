@@ -1,0 +1,14 @@
+C:\Users\biaar\source\repos\vuespa-netcore\api\Service\bin\Debug\netcoreapp2.0\Service.deps.json
+C:\Users\biaar\source\repos\vuespa-netcore\api\Service\bin\Debug\netcoreapp2.0\Service.dll
+C:\Users\biaar\source\repos\vuespa-netcore\api\Service\bin\Debug\netcoreapp2.0\Service.pdb
+C:\Users\biaar\source\repos\vuespa-netcore\api\Service\bin\Debug\netcoreapp2.0\Model.dll
+C:\Users\biaar\source\repos\vuespa-netcore\api\Service\bin\Debug\netcoreapp2.0\Persistence.dll
+C:\Users\biaar\source\repos\vuespa-netcore\api\Service\bin\Debug\netcoreapp2.0\Model.pdb
+C:\Users\biaar\source\repos\vuespa-netcore\api\Service\bin\Debug\netcoreapp2.0\Persistence.pdb
+C:\Users\biaar\source\repos\vuespa-netcore\api\Service\obj\Debug\netcoreapp2.0\Service.csprojAssemblyReference.cache
+C:\Users\biaar\source\repos\vuespa-netcore\api\Service\obj\Debug\netcoreapp2.0\Service.csproj.CoreCompileInputs.cache
+C:\Users\biaar\source\repos\vuespa-netcore\api\Service\obj\Debug\netcoreapp2.0\Service.AssemblyInfoInputs.cache
+C:\Users\biaar\source\repos\vuespa-netcore\api\Service\obj\Debug\netcoreapp2.0\Service.AssemblyInfo.cs
+C:\Users\biaar\source\repos\vuespa-netcore\api\Service\obj\Debug\netcoreapp2.0\Service.csproj.CopyComplete
+C:\Users\biaar\source\repos\vuespa-netcore\api\Service\obj\Debug\netcoreapp2.0\Service.dll
+C:\Users\biaar\source\repos\vuespa-netcore\api\Service\obj\Debug\netcoreapp2.0\Service.pdb
