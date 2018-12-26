@@ -14,6 +14,6 @@ namespace Model
 
         public string Password { get; set; }
 
-        public ICollection<Figure> Figure { get; set; }
+        public List<Figure> Figure { get; set; }
     }
 }

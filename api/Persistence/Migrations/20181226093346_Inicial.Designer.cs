@@ -8,12 +8,13 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 using Persistence;
 using System;
 
-namespace Persistence.Migrations.FigureDb
+namespace Persistence.Migrations
 {
     [DbContext(typeof(FigureDbContext))]
-    partial class FigureDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181226093346_Inicial")]
+    partial class Inicial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,7 +30,7 @@ namespace Persistence.Migrations.FigureDb
 
                     b.Property<int>("Number");
 
-                    b.Property<int?>("UserId");
+                    b.Property<int>("UserId");
 
                     b.HasKey("FigureId");
 
@@ -58,7 +59,8 @@ namespace Persistence.Migrations.FigureDb
                 {
                     b.HasOne("Model.User", "User")
                         .WithMany("Figure")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

@@ -41,6 +41,14 @@ export default {
           { icon: "plus", text: "Adicionar", path: "/users/add" },
           { icon: "list", text: "Lista", path: "/users" },
         ]
+      },  
+      {
+        icon: "user",
+        text: "Operações",
+        children: [
+          { icon: "plus", text: "Adicionar", path: "/users/add" },
+          { icon: "list", text: "Lista", path: "/users" },
+        ]
       }
     ]
   }),

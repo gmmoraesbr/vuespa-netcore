@@ -13,7 +13,9 @@ namespace Model
 
         public int Amount { get; set; }
 
-        [ForeignKey("UserId")]
-        public virtual User User { get; set; }
+        public int UserId { get; set; }
+
+        //[ForeignKey("UserId")]
+        public User User { get; set; }
     }
 }

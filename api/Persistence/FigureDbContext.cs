@@ -9,5 +9,17 @@ namespace Persistence
 
         public FigureDbContext(DbContextOptions<FigureDbContext> options) : base(options) {}
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+            modelBuilder.Entity<Figure>()
+            .Property<int>("UserId");
+
+            modelBuilder.Entity<Figure>()
+                .HasOne(e => e.User)
+                .WithMany(c => c.Figure)
+                .HasForeignKey(p => p.UserId); ;
+        }
+
     }
 }
