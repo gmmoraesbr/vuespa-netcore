@@ -30,24 +30,18 @@ export default {
         icon: "user",
         text: "Figurinhas",
         children: [
-          { icon: "plus", text: "Adicionar", path: "/figures/add" },
-          { icon: "list", text: "Lista", path: "/figures" },
+          { icon: "plus", text: "Adicionar figurinhas", path: "/figures/add" },
+          { icon: "list", text: "Lista figurinhas", path: "/figures" },
+          { icon: "list", text: "Lista de solicitações", path: "/figures/request" },
+          { icon: "list", text: "Ranking de trocas", path: "/figures/exchange" },
         ]
       },  
       {
         icon: "user",
         text: "Usuários",
         children: [
-          { icon: "plus", text: "Adicionar", path: "/users/add" },
-          { icon: "list", text: "Lista", path: "/users" },
-        ]
-      },  
-      {
-        icon: "user",
-        text: "Operações",
-        children: [
-          { icon: "plus", text: "Adicionar", path: "/users/add" },
-          { icon: "list", text: "Lista", path: "/users" },
+          { icon: "plus", text: "Adicionar usuários", path: "/users/add" },
+          { icon: "list", text: "Lista usuários", path: "/users" },
         ]
       }
     ]

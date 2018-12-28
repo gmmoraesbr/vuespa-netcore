@@ -2,13 +2,13 @@
 <div>
     <h2>Figurinhas</h2>
     <el-table v-loading="loading" :data="data" style="width: 100%">
-        <el-table-column prop="number" label="Número" sortable></el-table-column>
+        <el-table-column prop="number" label="Número da figurinha" sortable></el-table-column>
         <el-table-column prop="amount" label="Quantidade" sortable></el-table-column>
-        <!-- <el-table-column prop="User.Name" label="Usuário" sortable></el-table-column> -->
+        <!-- <el-table-column prop="userId" label="Usuário" sortable></el-table-column> -->
         <el-table-column align="right">
             <template slot-scope="scope">
+                <el-button @click="request(`${scope.row.figureId}`,`${scope.row.amount}`)">Solicitar trocar</el-button>
                 <el-button type="danger"  @click="remove(scope.row.figureId)">Deletar</el-button>
-                <el-button @click="$router.push(`/figures/${scope.row.figureId}/edit`)">Editar</el-button>
             </template>
         </el-table-column>    
     </el-table>
@@ -29,6 +29,18 @@ export default {
         self.getAll();
     },
     methods: {
+        request(figureId, amount){
+            let self = this;
+
+            if(amount <= 1){
+                self.$message({
+                    message: "Solicitação de troca somente com quantidade maior que 1.",
+                    type: "error"
+                });
+            }else {
+                self.$router.push(`/figures/${figureId}/request`)
+            }
+        },
         getAll() {
             let self = this;
 
@@ -38,6 +50,7 @@ export default {
                 .getAll()
                 .then(r => {
                     self.loading = false;
+                    
                     self.data = r.data;
                 })
                 .catch(r => {

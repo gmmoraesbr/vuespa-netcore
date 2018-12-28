@@ -23,6 +23,15 @@ namespace api.Controllers
             );
         }
 
+        [HttpGet]
+        [Route("Order")]
+        public IActionResult Order()
+        {
+            return Ok(
+                _userService.GetAllOrder()
+            );
+        }
+
         // GET api/values/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)

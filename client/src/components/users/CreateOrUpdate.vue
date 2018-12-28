@@ -11,9 +11,6 @@
       <el-form-item label="Senha" prop="password">
         <el-input type="password" v-model="form.password" autocomplete="off"></el-input>
       </el-form-item>
-      <!-- <el-select v-model="dafault" filterable placeholder="Select">
-        <el-option v-for="item in options" :key="item.userId" :label="item.name" :value="item.userId"></el-option>
-      </el-select> -->
       <el-form-item>
         <el-button @click="save" type="primary">Salvar</el-button>
       </el-form-item>
@@ -52,24 +49,8 @@ export default {
   created() {
     let self = this;
     self.get(self.$route.params.id);
-    //self.getAll();
   },
   methods: {
-    // getAll() {
-    //   let self = this;
-
-    //   self.$store.state.services.userService
-    //       .getAll()
-    //       .then(r => {
-    //           self.options = r.data;
-    //       })
-    //       .catch(r => {
-    //           self.$message({
-    //               message: "Ocorreu um erro inesperado",
-    //               type: "error"
-    //           });
-    //       });
-    // },
     get(id) {
       if(id == undefined) return;
 

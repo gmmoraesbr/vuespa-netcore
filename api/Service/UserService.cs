@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Model;
 using Persistence;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,6 +14,7 @@ namespace Service
         bool Delete(int id);
         bool Update(User model);
         User Get(int id);
+        IEnumerable<User> GetAllOrder();
     }
 
     public class UserService : IUserService
@@ -33,6 +35,26 @@ namespace Service
             try
             {
                 result = _userDbContext.User.ToList();
+            }
+            catch (System.Exception)
+            {
+
+            }
+
+            return result;
+        }
+
+        public IEnumerable<User> GetAllOrder()
+        {
+            var result = new List<User>();
+
+            try
+            {
+                //result = _userDbContext.User.ToList();
+
+                result = (from u in _userDbContext.User
+                          orderby u.FigureExchangeTotal descending
+                          select u).ToList();
             }
             catch (System.Exception)
             {
@@ -65,7 +87,7 @@ namespace Service
                 _userDbContext.Add(model);
                 _userDbContext.SaveChanges();
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
                 return false;
             }
@@ -84,6 +106,7 @@ namespace Service
                 originalModel.Name = model.Name;
                 originalModel.Email = model.Email;
                 originalModel.Password = model.Password;
+                originalModel.FigureExchangeTotal = model.FigureExchangeTotal;
 
                 _userDbContext.Update(originalModel);
                 _userDbContext.SaveChanges();

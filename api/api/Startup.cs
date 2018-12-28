@@ -23,9 +23,11 @@ namespace api
             var connection = Configuration.GetConnectionString("Dev");
             services.AddDbContext<UserDbContext>(options => options.UseSqlServer(connection));
             services.AddDbContext<FigureDbContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<FigureUserDbContext>(options => options.UseSqlServer(connection));
 
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IFigureService, FigureService>();
+            services.AddTransient<IFigureUserService, FigureUserService>();
 
             services.AddCors(options =>
             {

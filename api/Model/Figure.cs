@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
@@ -7,6 +8,7 @@ namespace Model
 {
     public class Figure
     {
+        [Key]
         public int FigureId { get; set; }
 
         public int Number { get; set; }
@@ -14,8 +16,8 @@ namespace Model
         public int Amount { get; set; }
 
         public int UserId { get; set; }
-
-        //[ForeignKey("UserId")]
         public User User { get; set; }
+        
+        public IList<FigureUser> FigureUser { get; set; }
     }
 }

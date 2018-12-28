@@ -1,10 +1,10 @@
-class UserService {
+class FigureUserService {
     axios
     baseUrl
 
     constructor(axios, apiUrl) {
         this.axios = axios
-        this.baseUrl = `${apiUrl}user`
+        this.baseUrl = `${apiUrl}figureuser`
     }
 
     get(id) {
@@ -26,17 +26,6 @@ class UserService {
         let self = this;
         return self.axios.put(`${self.baseUrl}`, model);
     }
-
-    remove(id) {
-        let self = this;
-        return self.axios.delete(`${self.baseUrl}/${id}`);
-    }
-
-    order() {
-        let self =  this;
-        return self.axios.get(`${self.baseUrl}/order`);
-    }
-
 }
 
-export default UserService
+export default FigureUserService

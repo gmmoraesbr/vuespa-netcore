@@ -10,11 +10,10 @@ using System;
 
 namespace Persistence.Migrations
 {
-    [DbContext(typeof(FigureDbContext))]
-    [Migration("20181226093346_Inicial")]
-    partial class Inicial
+    [DbContext(typeof(FigureUserDbContext))]
+    partial class FigureUserDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,6 +38,32 @@ namespace Persistence.Migrations
                     b.ToTable("Figure");
                 });
 
+            modelBuilder.Entity("Model.FigureUser", b =>
+                {
+                    b.Property<int>("FigureUserId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("FigureId");
+
+                    b.Property<int>("Number");
+
+                    b.Property<string>("Status");
+
+                    b.Property<int>("UserOwnerId");
+
+                    b.Property<int>("UserRequestId");
+
+                    b.HasKey("FigureUserId");
+
+                    b.HasIndex("FigureId");
+
+                    b.HasIndex("UserOwnerId");
+
+                    b.HasIndex("UserRequestId");
+
+                    b.ToTable("FigureUser");
+                });
+
             modelBuilder.Entity("Model.User", b =>
                 {
                     b.Property<int>("UserId")
@@ -46,13 +71,15 @@ namespace Persistence.Migrations
 
                     b.Property<string>("Email");
 
+                    b.Property<string>("FigureExchangeTotal");
+
                     b.Property<string>("Name");
 
                     b.Property<string>("Password");
 
                     b.HasKey("UserId");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Model.Figure", b =>
@@ -61,6 +88,24 @@ namespace Persistence.Migrations
                         .WithMany("Figure")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Model.FigureUser", b =>
+                {
+                    b.HasOne("Model.Figure", "Figure")
+                        .WithMany("FigureUser")
+                        .HasForeignKey("FigureId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Model.User", "UserOwner")
+                        .WithMany("FigureUserOwner")
+                        .HasForeignKey("UserOwnerId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Model.User", "UserRequest")
+                        .WithMany("FigureUserRequest")
+                        .HasForeignKey("UserRequestId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }

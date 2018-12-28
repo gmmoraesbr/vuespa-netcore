@@ -18,15 +18,12 @@ namespace Service
     public class FigureService : IFigureService
     {
         private readonly FigureDbContext _figureDbContext;
-        private readonly UserDbContext _userDbContext;
 
         public FigureService(
-            FigureDbContext figureDbContext,
-            UserDbContext userDbContext
+            FigureDbContext figureDbContext
         )
         {
             _figureDbContext = figureDbContext;
-            _userDbContext = userDbContext;
         }
 
         public IEnumerable<Figure> GetAll()
