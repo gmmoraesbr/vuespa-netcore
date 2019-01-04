@@ -1,1 +1,9 @@
 api/.vs/
+api/api/obj/
+api/api/bin/
+api/Model/obj/
+api/Model/bin/
+api/Persistence/obj/
+api/Persistence/bin/
+api/Service/obj/
+api/Service/bin/
