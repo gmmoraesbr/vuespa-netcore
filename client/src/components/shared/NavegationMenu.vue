@@ -31,7 +31,7 @@ export default {
         text: "Figurinhas",
         children: [
           { icon: "plus", text: "Adicionar figurinhas", path: "/figures/add" },
-          { icon: "list", text: "Lista figurinhas", path: "/figures" },
+          { icon: "list", text: "Listar figurinhas", path: "/figures" },
           { icon: "list", text: "Lista de solicitações", path: "/figures/request" },
           { icon: "list", text: "Ranking de trocas", path: "/figures/exchange" },
         ]
@@ -41,7 +41,7 @@ export default {
         text: "Usuários",
         children: [
           { icon: "plus", text: "Adicionar usuários", path: "/users/add" },
-          { icon: "list", text: "Lista usuários", path: "/users" },
+          { icon: "list", text: "Listar usuários", path: "/users" },
         ]
       }
     ]
