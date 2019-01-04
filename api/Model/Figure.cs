@@ -17,7 +17,9 @@ namespace Model
 
         public int UserId { get; set; }
         public User User { get; set; }
-        
-        public IList<FigureUser> FigureUser { get; set; }
+
+        [NotMapped]
+        public ICollection<FigureUser> FigureUser { get; set; }
+
     }
 }
