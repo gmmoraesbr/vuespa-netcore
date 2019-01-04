@@ -34,19 +34,30 @@ namespace Service
 
         public IEnumerable<FigureUser> GetAll()
         {
-            var result = new List<FigureUser>();
-
-
             try
             {
-                result = _figureUserDbContext.FigureUser.ToList();
+                var result = (from fi in _figureUserDbContext.FigureUser
+                             join uo in _userDbContext.User on fi.UserOwnerId equals uo.UserId
+                             join ur in _userDbContext.User on fi.UserRequestId equals ur.UserId
+                             select new FigureUser()
+                             {
+                                 FigureUserId = fi.FigureUserId,
+                                 Number = fi.Number,
+                                 Status = fi.Status,
+                                 FigureId = fi.FigureId,
+                                 UserOwnerId = fi.UserOwnerId,
+                                 UserRequestId = fi.UserRequestId,
+                                 UserOwner = new User { Name = uo.Name},
+                                 UserRequest = new User { Name = ur.Name }
+                             }
+                             ).ToList();
+
+                return result;
             }
             catch (System.Exception)
             {
-
+                return null;
             }
-
-            return result;
         }
 
         public FigureUser Get(int id)
@@ -93,13 +104,13 @@ namespace Service
                 _figureUserDbContext.Update(originalModel);
                 _figureUserDbContext.SaveChanges();
 
-                if (originalModel.Status == "Aceito")
+                if (originalModel.Status.Equals("Aceito"))
                 {
                     var originalModelUser = _userDbContext.User.Single(x =>
                         x.UserId == model.UserOwnerId
                     );
 
-                    var total = int.Parse(originalModelUser.FigureExchangeTotal);
+                    var total = Convert.ToInt32(originalModelUser.FigureExchangeTotal);
                     total += 1;
 
                     originalModelUser.FigureExchangeTotal = total.ToString();
@@ -117,7 +128,7 @@ namespace Service
                     _figureDbContext.SaveChanges();
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
                 return false;
             }

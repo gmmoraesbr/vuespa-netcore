@@ -18,28 +18,40 @@ namespace Service
     public class FigureService : IFigureService
     {
         private readonly FigureDbContext _figureDbContext;
+        private readonly UserDbContext _userDbContext;
 
         public FigureService(
-            FigureDbContext figureDbContext
+            FigureDbContext figureDbContext,
+            UserDbContext userDbContext
         )
         {
             _figureDbContext = figureDbContext;
+            _userDbContext = userDbContext;
         }
 
         public IEnumerable<Figure> GetAll()
-        {
-            var result = new List<Figure>();
-
+        {   
             try
             {
-                result = _figureDbContext.Figure.ToList();
+                var result = _figureDbContext.Figure
+                    .Join(_userDbContext.User
+                    , f => f.UserId
+                    , u => u.UserId
+                    , (f, u) => new Figure
+                    {
+                        FigureId = f.FigureId,
+                        Number = f.Number,
+                        Amount = f.Amount,
+                        UserId = f.UserId,
+                        User = new User { Name = u.Name }
+                    }).ToList();
+
+                return result;
             }
             catch (System.Exception)
             {
-
+                return null;
             }
-
-            return result;
         }
 
         public Figure Get(int id)
