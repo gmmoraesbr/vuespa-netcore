@@ -18,12 +18,12 @@ namespace Model
         public string Password { get; set; }
 
         public string FigureExchangeTotal { get; set; }
-        
+
         public IList<Figure> Figure { get; set; }
 
         [NotMapped]
-        public IList<FigureUser> FigureUserOwner { get; set; }
+        public ICollection<FigureUser> FigureUserOwner { get; set; }
         [NotMapped]
-        public IList<FigureUser> FigureUserRequest { get; set; }
+        public ICollection<FigureUser> FigureUserRequest { get; set; }
     }
 }
