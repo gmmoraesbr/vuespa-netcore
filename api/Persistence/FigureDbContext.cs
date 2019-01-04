@@ -18,8 +18,8 @@ namespace Persistence
             modelBuilder.Entity<Figure>()
                 .HasOne(e => e.User)
                 .WithMany(c => c.Figure)
-                .HasForeignKey(p => p.UserId);
+                .HasForeignKey(p => p.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
-
     }
 }
