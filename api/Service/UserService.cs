@@ -50,8 +50,6 @@ namespace Service
 
             try
             {
-                //result = _userDbContext.User.ToList();
-
                 result = (from u in _userDbContext.User
                           orderby u.FigureExchangeTotal descending
                           select u).ToList();

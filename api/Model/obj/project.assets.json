@@ -676,23 +676,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\biaar\\.nuget\\packages\\": {},
+    "C:\\Users\\gmmoraes\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\biaar\\source\\repos\\vuespa-netcore\\api\\Model\\Model.csproj",
+      "projectUniqueName": "C:\\Users\\gmmoraes\\source\\repos\\vuespa-netcore\\api\\Model\\Model.csproj",
       "projectName": "Model",
-      "projectPath": "C:\\Users\\biaar\\source\\repos\\vuespa-netcore\\api\\Model\\Model.csproj",
-      "packagesPath": "C:\\Users\\biaar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\biaar\\source\\repos\\vuespa-netcore\\api\\Model\\obj\\",
+      "projectPath": "C:\\Users\\gmmoraes\\source\\repos\\vuespa-netcore\\api\\Model\\Model.csproj",
+      "packagesPath": "C:\\Users\\gmmoraes\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\gmmoraes\\source\\repos\\vuespa-netcore\\api\\Model\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\biaar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\gmmoraes\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

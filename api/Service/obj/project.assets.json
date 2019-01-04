@@ -1713,7 +1713,7 @@
       ]
     },
     "Remotion.Linq/2.1.1": {
-      "sha512": "IJn0BqkvwEDpP+2qjvci7n4/a9f7DhKESLWb2/uG4xQh3rTkGTBUz69bI4IivCoKkTFAqjXxYDZw2K/npohjsw==",
+      "sha512": "m9y+SLyqYEDcc3lnqAHO2VOsdIeDuO02IuBXeo7CIDve2J3ahXQRieZt2DuoXgCnWW83PgN6+8CQsaORlwAMXw==",
       "type": "package",
       "path": "remotion.linq/2.1.1",
       "files": [
@@ -3520,23 +3520,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\biaar\\.nuget\\packages\\": {},
+    "C:\\Users\\gmmoraes\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\biaar\\source\\repos\\vuespa-netcore\\api\\Service\\Service.csproj",
+      "projectUniqueName": "C:\\Users\\gmmoraes\\source\\repos\\vuespa-netcore\\api\\Service\\Service.csproj",
       "projectName": "Service",
-      "projectPath": "C:\\Users\\biaar\\source\\repos\\vuespa-netcore\\api\\Service\\Service.csproj",
-      "packagesPath": "C:\\Users\\biaar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\biaar\\source\\repos\\vuespa-netcore\\api\\Service\\obj\\",
+      "projectPath": "C:\\Users\\gmmoraes\\source\\repos\\vuespa-netcore\\api\\Service\\Service.csproj",
+      "packagesPath": "C:\\Users\\gmmoraes\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\gmmoraes\\source\\repos\\vuespa-netcore\\api\\Service\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\biaar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\gmmoraes\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3549,11 +3549,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\biaar\\source\\repos\\vuespa-netcore\\api\\Model\\Model.csproj": {
-              "projectPath": "C:\\Users\\biaar\\source\\repos\\vuespa-netcore\\api\\Model\\Model.csproj"
+            "C:\\Users\\gmmoraes\\source\\repos\\vuespa-netcore\\api\\Model\\Model.csproj": {
+              "projectPath": "C:\\Users\\gmmoraes\\source\\repos\\vuespa-netcore\\api\\Model\\Model.csproj"
             },
-            "C:\\Users\\biaar\\source\\repos\\vuespa-netcore\\api\\Persistence\\Persistence.csproj": {
-              "projectPath": "C:\\Users\\biaar\\source\\repos\\vuespa-netcore\\api\\Persistence\\Persistence.csproj"
+            "C:\\Users\\gmmoraes\\source\\repos\\vuespa-netcore\\api\\Persistence\\Persistence.csproj": {
+              "projectPath": "C:\\Users\\gmmoraes\\source\\repos\\vuespa-netcore\\api\\Persistence\\Persistence.csproj"
             }
           }
         }
