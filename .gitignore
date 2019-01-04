@@ -1,9 +1,9 @@
 api/.vs/
 api/api/obj/Debug/
-api/api/bin/Debug/
+api/api/bin/
 api/Model/obj/Debug/
-api/Model/bin/Debug/
+api/Model/bin/
 api/Persistence/obj/Debug/
-api/Persistence/bin/Debug/
+api/Persistence/bin/
 api/Service/obj/Debug/
-api/Service/bin/Debug/
+api/Service/bin/
