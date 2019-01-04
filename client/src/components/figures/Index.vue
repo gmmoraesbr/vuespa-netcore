@@ -4,6 +4,7 @@
     <el-table v-loading="loading" :data="data" style="width: 100%">
         <el-table-column prop="number" label="Número da figurinha" sortable></el-table-column>
         <el-table-column prop="amount" label="Quantidade" sortable></el-table-column>
+        <el-table-column prop="user.name" label="Usuário" sortable></el-table-column>
         <!-- <el-table-column prop="userId" label="Usuário" sortable></el-table-column> -->
         <el-table-column align="right">
             <template slot-scope="scope">
@@ -50,7 +51,6 @@ export default {
                 .getAll()
                 .then(r => {
                     self.loading = false;
-                    
                     self.data = r.data;
                 })
                 .catch(r => {
