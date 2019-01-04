@@ -3,8 +3,8 @@
     <h2>Figurinhas</h2>
     <el-table v-loading="loading" :data="data" style="width: 100%">
         <el-table-column prop="number" label="Número da figurinha" sortable></el-table-column>
-        <el-table-column prop="userOwnerId" label="Dono" sortable></el-table-column>
-        <el-table-column prop="userRequestId" label="Solicitante" sortable></el-table-column>
+        <el-table-column prop="userOwner.name" label="Dono" sortable></el-table-column>
+        <el-table-column prop="userRequest.name" label="Solicitante" sortable></el-table-column>
         <el-table-column prop="status" label="Status" sortable></el-table-column>
         <el-table-column align="right">
             <template slot-scope="scope">
