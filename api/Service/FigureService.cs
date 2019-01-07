@@ -13,6 +13,7 @@ namespace Service
         bool Delete(int id);
         bool Update(Figure model);
         Figure Get(int id);
+        IEnumerable<Figure> FigureUser(int UserId);
     }
 
     public class FigureService : IFigureService
@@ -68,6 +69,33 @@ namespace Service
             }
 
             return result;
+        }
+
+        public IEnumerable<Figure> FigureUser(int userId)
+        {
+            try
+            {
+                 var result = (from fi in _figureDbContext.Figure
+                               where fi.UserId == userId && fi.Amount > 1
+                               select new Figure()
+                               {
+                                 FigureId = fi.FigureId,
+                                 Number = fi.Number,
+                                 Amount = fi.Amount,
+                                 UserId = fi.UserId,
+                                 User = new User {},
+                                 FigureOwner = fi.FigureOwner,
+                                 FigureRequest = fi.FigureRequest
+                               });
+
+                return result;
+
+            }
+            catch (System.Exception)
+            {
+                return null;
+            }
+
         }
 
         public bool Add(Figure model)
