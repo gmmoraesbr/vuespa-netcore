@@ -1,7 +1,7 @@
 <template>
 <el-container>
-  <el-header>
-    <h1>Figurinhas da Copa</h1>
+  <el-header style="background: rgb(4, 80, 160);">
+    <h1><i class="fa fa-meh-o"></i> Figurinhas da Copa</h1>
   </el-header>
   <el-container>
     <el-aside style="width:240px;">

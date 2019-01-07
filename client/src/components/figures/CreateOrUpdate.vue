@@ -2,7 +2,7 @@
 <div>
     <h2>{{ pageTitle }}</h2>
     <el-form v-loading="loading" :model="form" :rules="rules" ref="ruleForm">
-      <el-form-item label="Usuário" prop="userId">
+      <el-form-item label="Dono" prop="userId">
         <el-select v-model="selected" filterable placeholder="Select">
           <el-option v-for="item in options" :key="item.userId" :label="item.name" :value="item.userId" ></el-option>
         </el-select>
@@ -14,7 +14,7 @@
         <el-input v-model="form.amount"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button @click="save" type="primary">Salvar</el-button>
+        <el-button @click="save" type="success">Salvar figurinha</el-button>
       </el-form-item>
     </el-form>
 </div>

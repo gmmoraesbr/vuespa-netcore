@@ -1,12 +1,12 @@
 <template>
-<el-menu default-active="0">
+<el-menu default-active="0" style="background-color: #dce8f5;">
     <template v-for="item, i in items">
         <el-submenu :index="i.toString()" v-if="item.children !== undefined">
             <template slot="title">
                 <i :class="'fa fa-' + item.icon"></i>
                 <span>{{ item.text }}</span>
             </template>
-            <el-menu-item-group title="Opções">
+            <el-menu-item-group title="Opções" style="background-color: #eff5fb;">
                 <el-menu-item v-for="child, c in item.children" :index="(i.toString() + c)" @click="redirect(child.path)">
                     <i :class="'fa fa-' + child.icon"></i> <span>{{ child.text }}</span>
                 </el-menu-item>
@@ -27,7 +27,7 @@ export default {
     items: [
       //{ icon: "dashboard", text: "Dashboard", path: "/" },
       {
-        icon: "user",
+        icon: "table",
         text: "Figurinhas",
         children: [
           { icon: "plus", text: "Adicionar figurinhas", path: "/figures/add" },

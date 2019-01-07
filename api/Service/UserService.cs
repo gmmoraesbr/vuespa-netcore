@@ -85,7 +85,7 @@ namespace Service
                 _userDbContext.Add(model);
                 _userDbContext.SaveChanges();
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
                 return false;
             }

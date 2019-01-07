@@ -6,8 +6,8 @@
         <el-table-column prop="email" label="E-mail" sortable></el-table-column>
         <el-table-column align="right">
             <template slot-scope="scope">
-                <el-button type="danger"  @click="remove(scope.row.userId)">Deletar</el-button>
-                <el-button @click="$router.push(`/users/${scope.row.userId}/edit`)">Editar</el-button>
+                <el-button type="danger" @click="remove(scope.row.userId)">Deletar</el-button>
+                <el-button type="warning" @click="$router.push(`/users/${scope.row.userId}/edit`)">Editar</el-button>
             </template>
         </el-table-column>    
     </el-table>

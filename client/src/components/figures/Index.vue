@@ -1,15 +1,15 @@
 <template>
 <div>
     <h2>Figurinhas</h2>
-    <el-table v-loading="loading" :data="data" style="width: 100%">
+    <el-table v-loading="loading" :data="data" style="width: 100%;">
         <el-table-column prop="number" label="Número da figurinha" sortable></el-table-column>
         <el-table-column prop="amount" label="Quantidade" sortable></el-table-column>
         <el-table-column prop="user.name" label="Usuário" sortable></el-table-column>
         <!-- <el-table-column prop="userId" label="Usuário" sortable></el-table-column> -->
         <el-table-column align="right">
             <template slot-scope="scope">
-                <el-button @click="request(`${scope.row.figureId}`,`${scope.row.amount}`)">Solicitar trocar</el-button>
-                <el-button type="danger"  @click="remove(scope.row.figureId)">Deletar</el-button>
+                <el-button type="success" @click="request(`${scope.row.figureId}`,`${scope.row.amount}`)">Solicitar trocar</el-button>
+                <el-button type="danger" @click="remove(scope.row.figureId)">Deletar</el-button>
             </template>
         </el-table-column>    
     </el-table>
