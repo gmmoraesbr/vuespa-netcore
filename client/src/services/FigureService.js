@@ -31,6 +31,11 @@ class FigureService {
         let self = this;
         return self.axios.delete(`${self.baseUrl}/${id}`);
     }
+
+    user(id) {
+        let self = this;
+        return self.axios.get(`${self.baseUrl}/user/${id}`);
+    }
 }
 
 export default FigureService
