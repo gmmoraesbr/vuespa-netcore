@@ -42,9 +42,11 @@ namespace Service
                              select new FigureUser()
                              {
                                  FigureUserId = fi.FigureUserId,
-                                 Number = fi.Number,
+                                 FigureOwnerId = fi.FigureOwnerId,
+                                 FigureRequestId = fi.FigureRequestId,
+                                 NumberOwner = fi.NumberOwner,
+                                 NumberRequest = fi.NumberRequest,
                                  Status = fi.Status,
-                                 FigureId = fi.FigureId,
                                  UserOwnerId = fi.UserOwnerId,
                                  UserRequestId = fi.UserRequestId,
                                  UserOwner = new User { Name = uo.Name},
@@ -106,29 +108,59 @@ namespace Service
 
                 if (originalModel.Status.Equals("Aceito"))
                 {
-                    var originalModelUser = _userDbContext.User.Single(x =>
+                    var originalModelUserOwner = _userDbContext.User.Single(x =>
                         x.UserId == model.UserOwnerId
                     );
 
-                    var total = Convert.ToInt32(originalModelUser.FigureExchangeTotal);
-                    total += 1;
+                    var totalOwner = Convert.ToInt32(originalModelUserOwner.FigureExchangeTotal);
+                    totalOwner += 1;
 
-                    originalModelUser.FigureExchangeTotal = total.ToString();
+                    originalModelUserOwner.FigureExchangeTotal = totalOwner.ToString();
 
-                    _userDbContext.Update(originalModelUser);
-                    _userDbContext.SaveChanges();
-
-                    var originalModelFigure = _figureDbContext.Figure.Single(x =>
-                        x.FigureId == model.FigureId
+                    var originalModelUserRequest = _userDbContext.User.Single(x =>
+                        x.UserId == model.UserRequestId
                     );
 
-                    originalModelFigure.Amount -= 1;
+                    var totalRequest = Convert.ToInt32(originalModelUserRequest.FigureExchangeTotal);
+                    totalRequest += 1;
 
-                    _figureDbContext.Update(originalModelFigure);
+                    originalModelUserRequest.FigureExchangeTotal = totalRequest.ToString();
+
+                    var originalModelFigureOwner = _figureDbContext.Figure.Single(x =>
+                      x.FigureId.Equals(model.FigureOwnerId));
+
+                    originalModelFigureOwner.Amount -= 1;
+
+                    var originalModelFigureRequest = _figureDbContext.Figure.Single(x =>
+                      x.FigureId.Equals(model.FigureRequestId));
+
+                    originalModelFigureRequest.Amount -= 1;
+                    
+                    object figureOwner = new Figure{ Number = model.NumberOwner, Amount = 1, UserId = model.UserOwnerId };
+                    object figureRequest = new Figure { Number = model.NumberRequest, Amount = 1, UserId = model.UserRequestId };
+
+                    _userDbContext.Update(originalModelUserOwner);
+                    _userDbContext.SaveChanges();
+
+                    _userDbContext.Update(originalModelUserRequest);
+                    _userDbContext.SaveChanges();
+
+                    _figureDbContext.Update(originalModelFigureOwner);
                     _figureDbContext.SaveChanges();
+
+                    _figureDbContext.Update(originalModelFigureRequest);
+                    _figureDbContext.SaveChanges();
+
+                    _figureDbContext.Add(figureOwner);
+                    _figureDbContext.SaveChanges();
+
+                    _figureDbContext.Add(figureRequest);
+                    _figureDbContext.SaveChanges();
+
+
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
                 return false;
             }
