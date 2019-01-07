@@ -23,6 +23,7 @@ const routes = [
   { path: '/figures/request', name: 'FigureRequest', component: FigureRequest },
   { path: '/figures/exchange', name: 'FigureExchange', component: FigureExchange },
   { path: '/figures/:id/request', name: 'FigureRequestExchange', component: FigureRequestExchange },
+  { path: '/figures/user/:id', name: 'FigureRequestExchangeUser', component: FigureRequestExchange },
 ]
 
 export default new Router({
