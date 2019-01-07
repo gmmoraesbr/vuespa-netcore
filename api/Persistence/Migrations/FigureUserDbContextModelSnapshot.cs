@@ -43,9 +43,13 @@ namespace Persistence.Migrations
                     b.Property<int>("FigureUserId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("FigureId");
+                    b.Property<int>("FigureOwnerId");
 
-                    b.Property<int>("Number");
+                    b.Property<int>("FigureRequestId");
+
+                    b.Property<int>("NumberOwner");
+
+                    b.Property<int>("NumberRequest");
 
                     b.Property<string>("Status");
 
@@ -55,7 +59,9 @@ namespace Persistence.Migrations
 
                     b.HasKey("FigureUserId");
 
-                    b.HasIndex("FigureId");
+                    b.HasIndex("FigureOwnerId");
+
+                    b.HasIndex("FigureRequestId");
 
                     b.HasIndex("UserOwnerId");
 
@@ -92,10 +98,15 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Model.FigureUser", b =>
                 {
-                    b.HasOne("Model.Figure", "Figure")
-                        .WithMany("FigureUser")
-                        .HasForeignKey("FigureId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.HasOne("Model.Figure", "FigureOwner")
+                        .WithMany("FigureOwner")
+                        .HasForeignKey("FigureOwnerId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Model.Figure", "FigureRequest")
+                        .WithMany("FigureRequest")
+                        .HasForeignKey("FigureRequestId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Model.User", "UserOwner")
                         .WithMany("FigureUserOwner")
