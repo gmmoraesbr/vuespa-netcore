@@ -19,7 +19,9 @@ namespace Model
         public User User { get; set; }
 
         [NotMapped]
-        public ICollection<FigureUser> FigureUser { get; set; }
+        public ICollection<FigureUser> FigureOwner { get; set; }
+        [NotMapped]
+        public ICollection<FigureUser> FigureRequest { get; set; }
 
     }
 }
