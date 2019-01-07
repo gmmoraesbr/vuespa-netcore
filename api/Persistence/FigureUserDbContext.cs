@@ -11,8 +11,6 @@ namespace Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Ignore<User>();
-            //modelBuilder.Ignore<Figure>();
 
             modelBuilder.Entity<FigureUser>()
                 .Property<int>("UserOwnerId");
@@ -33,12 +31,23 @@ namespace Persistence
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<FigureUser>()
-           .Property<int>("FigureId");
+                .Property<int>("FigureOwnerId");
 
             modelBuilder.Entity<FigureUser>()
-                .HasOne(e => e.Figure)
-                .WithMany(c => c.FigureUser)
-                .HasForeignKey(p => p.FigureId);
+                .HasOne<Figure>(e => e.FigureOwner)
+                .WithMany(c => c.FigureOwner)
+                .HasForeignKey(p => p.FigureOwnerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<FigureUser>()
+                .Property<int>("FigureRequestId");
+
+            modelBuilder.Entity<FigureUser>()
+                .HasOne<Figure>(e => e.FigureRequest)
+                .WithMany(c => c.FigureRequest)
+                .HasForeignKey(p => p.FigureRequestId)
+                .OnDelete(DeleteBehavior.Restrict);
+
         }
 
     }
