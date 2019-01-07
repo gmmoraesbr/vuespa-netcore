@@ -52,8 +52,10 @@ namespace Persistence.Migrations
                 {
                     FigureUserId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    FigureId = table.Column<int>(nullable: false),
-                    Number = table.Column<int>(nullable: false),
+                    FigureOwnerId = table.Column<int>(nullable: false),
+                    FigureRequestId = table.Column<int>(nullable: false),
+                    NumberOwner = table.Column<int>(nullable: false),
+                    NumberRequest = table.Column<int>(nullable: false),
                     Status = table.Column<string>(nullable: true),
                     UserOwnerId = table.Column<int>(nullable: false),
                     UserRequestId = table.Column<int>(nullable: false)
@@ -62,11 +64,17 @@ namespace Persistence.Migrations
                 {
                     table.PrimaryKey("PK_FigureUser", x => x.FigureUserId);
                     table.ForeignKey(
-                        name: "FK_FigureUser_Figure_FigureId",
-                        column: x => x.FigureId,
+                        name: "FK_FigureUser_Figure_FigureOwnerId",
+                        column: x => x.FigureOwnerId,
                         principalTable: "Figure",
                         principalColumn: "FigureId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_FigureUser_Figure_FigureRequestId",
+                        column: x => x.FigureRequestId,
+                        principalTable: "Figure",
+                        principalColumn: "FigureId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_FigureUser_Users_UserOwnerId",
                         column: x => x.UserOwnerId,
@@ -87,9 +95,14 @@ namespace Persistence.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FigureUser_FigureId",
+                name: "IX_FigureUser_FigureOwnerId",
                 table: "FigureUser",
-                column: "FigureId");
+                column: "FigureOwnerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FigureUser_FigureRequestId",
+                table: "FigureUser",
+                column: "FigureRequestId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FigureUser_UserOwnerId",
