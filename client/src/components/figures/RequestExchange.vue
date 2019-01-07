@@ -2,24 +2,46 @@
 <div>
     <h2>{{ pageTitle }}</h2>
     <el-form v-loading="loading" :model="form" :rules="rules" ref="ruleForm">
-      <el-form-item label="Solicitante da troca" prop="userRequestId">
-        <el-select v-model="selectedRequest" filterable placeholder="Select">
-          <el-option v-for="item in options" :key="item.userId" :label="item.name" :value="item.userId" ></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="Dono da figurinha" prop="userOwnerId">
-        <el-select :disabled="clickable" v-model="selectedOwner" filterable placeholder="Select">
-          <el-option v-for="item in options" :key="item.userId" :label="item.name" :value="item.userId" ></el-option>
-        </el-select>
-      </el-form-item> 
-      <el-form-item label="Número" prop="number">
-        <el-input :disabled="clickable" v-model="form.number"></el-input>
-      </el-form-item>
-      <el-form-item label="Quantidade" prop="amount">
-        <el-input :disabled="clickable" v-model="form.amount"></el-input>
-      </el-form-item>
+      <el-row>
+        <el-col :span="12">
+          <div class="grid-content bg-purple">
+            <el-form-item label="Solicitante" prop="userRequestId">
+              <el-select @change="selectFigureUser" v-model="selectedRequest" filterable placeholder="Select">
+                <el-option v-for="item in options" :key="item.userId" :label="item.name" :value="item.userId" ></el-option>
+              </el-select>
+            </el-form-item>
+          </div>
+        </el-col>
+        <el-col :span="12">
+          <div class="grid-content bg-purple">
+            <el-form-item label="Solicitado" prop="userOwnerId">
+              <el-select :disabled="clickable" v-model="selectedOwner" filterable placeholder="Select">
+                <el-option v-for="item in options" :key="item.userId" :label="item.name" :value="item.userId" ></el-option>
+              </el-select>
+            </el-form-item>
+          </div>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="12">
+          <div class="grid-content bg-purple">
+            <el-form-item label="Número da figurinha" prop="figureRequestId">
+              <el-select  @change="selectFigureNumber" v-model="selectedRequestFigure" filterable placeholder="Select">
+                <el-option v-for="item in optionsNumber" :key="item.figureId" :label="item.number" :value="item.figureId" ></el-option>
+              </el-select>
+            </el-form-item>
+          </div>
+        </el-col>
+        <el-col :span="12">
+          <div class="grid-content bg-purple">
+            <el-form-item label="Número da figurinha" prop="numberOwner">
+              <el-input :disabled="clickable" v-model="form.numberOwner"></el-input>
+            </el-form-item>
+          </div>
+        </el-col>
+      </el-row>
       <el-form-item>
-        <el-button @click="save" type="primary">Salvar</el-button>
+        <el-button @click="save" type="success">Solicitar troca</el-button>
       </el-form-item>
     </el-form>
 </div>
@@ -34,17 +56,21 @@ export default {
       form: {
         userOwnerId: 0,
         userRequestId: 0,
-        name: null,
-        email: null
+        figureOwnerId: 0,
+        figureRequestId: 0,
+        numberRequest: null,
+        numberOwner: null
       },
       options: [],
+      optionsNumber: [],
       selectedOwner: '',
-      selectedRequest: ''
+      selectedRequest: '',
+      selectedRequestFigure: ''
     };
   },
   computed: {
     pageTitle() {
-      return `Solicitar troca do número`;
+      return `Solicitar troca`;
     },
     clickable() {
         return true;
@@ -82,8 +108,7 @@ export default {
         .then(r => {
           self.loading = false;
           self.form.figureId = r.data.figureId;
-          self.form.number = r.data.number;
-          self.form.amount = r.data.amount;
+          self.form.numberOwner = r.data.number;
           self.selectedOwner = r.data.userId;
         })
         .catch(r => {
@@ -93,6 +118,38 @@ export default {
           });
         });
     },
+    selectFigureUser() {
+      let self = this;
+
+      self.selectedNumerRequest = null;
+
+      self.$store.state.services.figureService
+          .user(self.selectedRequest)
+          .then(r => {
+              self.optionsNumber = r.data;
+          })
+          .catch(r => {
+              self.$message({
+                  message: "Ocorreu um erro inesperado",
+                  type: "error"
+              });
+          });
+    },
+    selectFigureNumber() {
+      let self = this;
+
+      self.$store.state.services.figureService
+          .get(self.selectedRequestFigure)
+          .then(r => {
+              self.form.numberRequest = r.data.number;
+          })
+          .catch(r => {
+              self.$message({
+                  message: "Ocorreu um erro inesperado",
+                  type: "error"
+              });
+          });
+    },
     save() {
       let self = this;
       self.$refs["ruleForm"].validate(valid => {
@@ -101,7 +158,10 @@ export default {
           
           self.form.userOwnerId = self.selectedOwner;
           self.form.userRequestId = self.selectedRequest;
-
+          self.form.figureOwnerId = self.form.figureId;
+          self.form.figureRequestId = self.selectedRequestFigure;
+          //debug;
+          console.log(self.form);
             self.$store.state.services.figureUserService
               .add(self.form)
               .then(r => {
@@ -120,3 +180,23 @@ export default {
   }
 };
 </script>
+
+<style>
+  .el-row {
+    margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .el-col {
+    border-radius: 4px;
+  }
+  .grid-content {
+    border-radius: 4px;
+    min-height: 36px;
+  }
+  .row-bg {
+    padding: 10px 0;
+    background-color: #f9fafc;
+  }
+</style>

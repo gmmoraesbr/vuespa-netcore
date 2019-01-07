@@ -12,7 +12,7 @@
         <el-input type="password" v-model="form.password" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button @click="save" type="primary">Salvar</el-button>
+        <el-button @click="save" type="success">Salvar</el-button>
       </el-form-item>
     </el-form>
 </div>
