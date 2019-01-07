@@ -23,7 +23,16 @@ namespace api.Controllers
             );
         }
 
-        // GET api/values/5
+        // GET api/values/values/5
+        [HttpGet]
+        [Route("user/{userId?}")]
+        public IActionResult FigureUser(int userId)
+        {          
+            return Ok(
+                _figureService.FigureUser(userId)
+            );
+        }
+
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
