@@ -8,14 +8,19 @@ namespace Model
 {
     public class Figure
     {
+        [Key]
         public int FigureId { get; set; }
-        public int Number { get; set; }
-        public int Amount { get; set; }
-        public int UserId { get; set; }
 
+        public int Number { get; set; }
+
+        public int Amount { get; set; }
+
+        public int UserId { get; set; }
         public User User { get; set; }
 
+        [NotMapped]
         public ICollection<FigureUser> FigureOwner { get; set; }
+        [NotMapped]
         public ICollection<FigureUser> FigureRequest { get; set; }
 
     }

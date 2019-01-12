@@ -4,9 +4,13 @@ namespace Model
 {
     public class FigureUser
     {
+        [Key]
         public int FigureUserId { get; set; }
+
         public int NumberOwner { get; set; }
+
         public int NumberRequest { get; set; }
+
         public string Status { get; set; } = "Pendente";
 
         public int UserOwnerId { get; set; }
