@@ -10,20 +10,14 @@ namespace Model
     public class User
     {
         public int UserId { get; set; }
-
         public string Name { get; set; }
-
         public string Email { get; set; }
-
         public string Password { get; set; }
-
         public string FigureExchangeTotal { get; set; }
 
         public IList<Figure> Figure { get; set; }
-
-        [NotMapped]
+        
         public ICollection<FigureUser> FigureUserOwner { get; set; }
-        [NotMapped]
         public ICollection<FigureUser> FigureUserRequest { get; set; }
     }
 }
