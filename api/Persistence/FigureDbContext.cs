@@ -13,13 +13,18 @@ namespace Persistence
         {
 
             modelBuilder.Entity<Figure>()
-            .Property<int>("UserId");
+                .HasKey(c => c.FigureId);
+
+            modelBuilder.Entity<Figure>()
+                .Property<int>("UserId");
 
             modelBuilder.Entity<Figure>()
                 .HasOne(e => e.User)
                 .WithMany(c => c.Figure)
                 .HasForeignKey(p => p.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Ignore<FigureUser>();
         }
     }
 }

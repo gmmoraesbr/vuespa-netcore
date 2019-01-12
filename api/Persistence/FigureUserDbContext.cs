@@ -11,6 +11,12 @@ namespace Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<FigureUser>()
+                .HasKey(c => c.FigureUserId);
+
+            modelBuilder.Entity<FigureUser>()
+                .Property(p => p.Status)
+                .IsRequired();
 
             modelBuilder.Entity<FigureUser>()
                 .Property<int>("UserOwnerId");
